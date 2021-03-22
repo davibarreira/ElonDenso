@@ -96,8 +96,7 @@
 
 \begin{definition}[\textbf{Axioma da Completude}]
 	Todo conjunto não-vazio $X \in \mathbb R$ limitado superiormente possui
-	supremo $b = \sup X \in \mathbb R$. Isso é uma maneira de construir os números reais,
-	mas poderia ser substituido por outras formulações equivalentes, como vamos mostrar mais a frente.
+	supremo $b = \sup X \in \mathbb R$.
 \end{definition}
 
 \begin{definition}[Sequência]
@@ -123,6 +122,18 @@
 	Dizemos que $\lim_{n \to +\infty} x_n = +\infty$ se
 	para todo $M > 0$ existir um $n_o \in \mathbb N$ tal que
 	$n > n_o \implies x_n > M$.
+\end{definition}
+
+\begin{definition}[Limite Superior e Inferior]
+	O Limite Superior de uma sequência $(x_n)$ é
+	\begin{equation}
+	\limsup_{n\to +\infty} x_n= \lim_{k\to +\infty} \sup_{n\geq k} x_n = \inf_k \sup_{n \geq k} x_n.
+	\end{equation}
+
+	O Limite Inferior de uma sequência $(x_n)$ é
+	\begin{equation}
+	\liminf_{n\to +\infty} x_n= \lim_{k\to +\infty} \inf_{n\geq k} x_n = \sup_k \inf_{n \geq k} x_n.
+	\end{equation}
 \end{definition}
 
 % \textbf{Propriedades dos Limites}
@@ -218,9 +229,32 @@
 	$(x_n)$ é de Cauchy se para todo $\varepsilon >0$ existe $n_o \in \mathbb N$ tal que
 	$n,m > n_o \implies |x_n - x_m|<\varepsilon$.
 \end{definition}
-\begin{theorem}[Cauchy $\iff$ Convergente]
-	$(x_n)$ é de 
+\begin{theorem}[Convergência de Cauchy]
+	$(x_n)$ é de Cauchy, se, e somente se, $(x_n)$ é convergente.
 \end{theorem}
+\begin{proof}
+	$\impliedby)$ Seja $\lim_n (x_n) = L$, assim, para $\varepsilon$ existe $n_o$ tal que $n> n_o$ implica
+	$|x_n - L| < \varepsilon/2$. Logo, para $n,m > n_o$, temos $|x_n - x_m| \leq |x_n - L| + |L - x_m| < \varepsilon$.
+
+	$\implies)$ Seja $(x_n)$ de Cauchy, então para $\varepsilon > 0$, existe $n_o$ tal que
+	$n,m > n_o \implies |x_n - x_m| < \varepsilon/2$. Logo, pra um $n_1>n_o$ fixo, temos $|x_{n_1} - x_m| < \varepsilon/2$
+	assim, $(x_n) \subset \{x_1,...,x_{n_1}, (x_{n_1}-\varepsilon/2,x_{n_1}+\varepsilon/2)\}$. Portanto, $(x_n)$ é limitada.
+	Por Bolzano-Weierstrass, existe $(x_{n_k})$ que converge, chamemos $\lim_k x_{n_k} = L$.
+	Para $n_{k_o}$, $n_k > n_{k_o} \implies |x_{n_k} - L| < \varepsilon/2$.
+	Para $n,n_k >\max \{n_o, n_{k_o}\}$,
+	Finalmente,$|x_n - L| \leq |x_n - x_{n_k}| + |x_{n_k} - L| < \varepsilon$.
+\end{proof}
+
+Os números reais podem ser construídos de diferentes formas. Começamos supondo o Axioma da Completude
+onde todo conjunto superiormente limitado possui um supremo. Esse Axioma é equivalente ao Teorema de 
+Convergência de Cauchy. Assim, poderíamos ter começado supondo que o Axioma era que toda sequência de Cauchy converge
+para algum limite $L$ e então provar que todo conjunto limitado superiormente possuía um supremo.
+O mesmo é verdade para o teorema de Bolzano-Weierstrass e para a dupla Intervalos Encaixados + Teorema da
+Convergência Monótona. Em resumo:
+\begin{equation*}
+	\mathrm{AC} \iff \{\mathrm {IE, TCM}\} \iff \mathrm{BW} \iff \mathrm{CC}
+\end{equation*}
+
 
   \bibliography{ref}
   \bibliographystyle{plainnat}
